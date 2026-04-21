@@ -1,9 +1,28 @@
 import { motion } from "framer-motion";
 import { LogOut } from "lucide-react";
-import { diasParqueado } from "../../utils/parqueadero";
+import { diasParqueado, formatearFechaHora } from "../../utils/parqueadero";
 import { formatearDinero } from "../../utils/formato";
 
-export default function ExitCards({ vehiculos, tarifaPorTipo, onRegistrarSalida }) {
+export default function ExitCards({
+  fechaHoraSistema,
+  vehiculos,
+  tarifaPorTipo,
+  onRegistrarSalida,
+}) {
+  if (vehiculos.length === 0) {
+    return (
+      <section className="card">
+        <div className="card-header">
+          <h2>Registrar salida y cobrar</h2>
+        </div>
+
+        <div className="empty-state">
+          No hay vehiculos activos pendientes por cobrar.
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="card">
       <div className="card-header">
@@ -27,7 +46,7 @@ export default function ExitCards({ vehiculos, tarifaPorTipo, onRegistrarSalida 
                   <h3>{vehiculo.placa}</h3>
                   <p>{vehiculo.tipo}</p>
                 </div>
-                <span className="badge neutral">{dias} día(s)</span>
+                <span className="badge neutral">{dias} dia(s)</span>
               </div>
 
               <div className="exit-details">
@@ -35,10 +54,14 @@ export default function ExitCards({ vehiculos, tarifaPorTipo, onRegistrarSalida 
                   <strong>Conductor:</strong> {vehiculo.conductor}
                 </p>
                 <p>
-                  <strong>Teléfono:</strong> {vehiculo.telefono}
+                  <strong>Telefono:</strong> {vehiculo.telefono}
                 </p>
                 <p>
-                  <strong>Fecha entrada:</strong> {vehiculo.entrada}
+                  <strong>Entrada:</strong> {formatearFechaHora(vehiculo.entrada)}
+                </p>
+                <p>
+                  <strong>Salida automatica:</strong>{" "}
+                  {formatearFechaHora(fechaHoraSistema)}
                 </p>
                 <p>
                   <strong>Valor a cobrar:</strong> {formatearDinero(total)}

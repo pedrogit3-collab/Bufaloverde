@@ -23,9 +23,15 @@ select {
   font: inherit;
 }
 
+.login-shell,
 .app-shell {
   min-height: 100vh;
   padding: 24px;
+}
+
+.login-shell {
+  display: grid;
+  place-items: center;
 }
 
 .container {
@@ -35,6 +41,15 @@ select {
   gap: 24px;
 }
 
+.login-layout {
+  width: min(1120px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 420px);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.login-hero,
 .hero {
   display: flex;
   justify-content: space-between;
@@ -51,9 +66,129 @@ select {
   font-size: clamp(2rem, 4vw, 3rem);
 }
 
+.login-hero {
+  flex-direction: column;
+  justify-content: center;
+  min-height: 560px;
+}
+
 .hero p {
   max-width: 580px;
   color: #dbe4f0;
+}
+
+.login-eyebrow,
+.login-badge,
+.session-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.login-eyebrow,
+.session-label {
+  background: rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+}
+
+.login-card {
+  padding: 32px;
+  align-self: center;
+}
+
+.login-card-header h2 {
+  margin: 12px 0 8px;
+  font-size: 1.8rem;
+}
+
+.login-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.login-points {
+  display: grid;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.login-point {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+}
+
+.login-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.login-field {
+  display: grid;
+  gap: 8px;
+  color: #334155;
+  font-weight: 600;
+}
+
+.login-field input {
+  width: 100%;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1px solid #dbe4f0;
+  border-radius: 18px;
+  outline: none;
+}
+
+.login-error {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 0.95rem;
+}
+
+.hero-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.session-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(100%, 420px);
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.session-panel strong,
+.session-panel p {
+  display: block;
+}
+
+.session-panel strong {
+  margin-top: 8px;
+  font-size: 1.05rem;
+}
+
+.session-panel p {
+  margin: 6px 0 0;
+  color: #cbd5e1;
+  text-transform: capitalize;
 }
 
 .hero-grid {
@@ -141,9 +276,9 @@ select {
 
 .tabs-nav {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
-  width: min(100%, 620px);
+  width: min(100%, 860px);
   padding: 8px;
   background: #ffffff;
   border-radius: 22px;
@@ -290,6 +425,22 @@ select {
   border-radius: 18px;
 }
 
+.readonly-box {
+  display: grid;
+  gap: 8px;
+  align-content: center;
+  padding: 14px 16px;
+  border: 1px dashed #94a3b8;
+  border-radius: 18px;
+  background: #f8fafc;
+  color: #334155;
+}
+
+.readonly-box span {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
 .actions-row {
   display: flex;
   justify-content: space-between;
@@ -314,6 +465,30 @@ select {
   border-radius: 18px;
   background: #0f172a;
   color: white;
+  cursor: pointer;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border: 1px solid rgba(226, 232, 240, 0.3);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.15);
+  color: white;
+  cursor: pointer;
+}
+
+.danger-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 14px;
+  background: #fee2e2;
+  color: #991b1b;
   cursor: pointer;
 }
 
@@ -356,13 +531,140 @@ select {
   margin-bottom: 16px;
 }
 
+.report-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.admin-panel {
+  padding-bottom: 24px;
+}
+
+.admin-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0 24px;
+}
+
+.admin-section {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  background: #fff;
+}
+
+.admin-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: #334155;
+}
+
+.admin-form {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-message {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.report-overview {
+  padding-bottom: 24px;
+}
+
+.report-lead {
+  margin: 8px 0 0;
+}
+
+.month-filter {
+  display: grid;
+  gap: 8px;
+  min-width: 180px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.month-filter input {
+  padding: 12px 14px;
+  border: 1px solid #dbe4f0;
+  border-radius: 16px;
+  background: #f8fafc;
+}
+
+.report-summary-grid,
+.report-type-grid {
+  display: grid;
+  gap: 16px;
+  padding: 24px 24px 0;
+}
+
+.report-summary-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.report-type-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.report-stat,
+.report-type-card,
+.empty-state {
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.report-stat {
+  padding: 20px;
+}
+
+.report-type-card {
+  padding: 18px 20px;
+}
+
+.report-type-card p,
+.report-type-card span {
+  margin: 0;
+}
+
+.report-type-card strong {
+  display: block;
+  margin: 10px 0 6px;
+  font-size: 1.2rem;
+  color: #0f172a;
+}
+
+.report-type-card span {
+  color: #64748b;
+}
+
+.empty-state {
+  margin: 24px;
+  padding: 24px;
+  color: #475569;
+  text-align: center;
+  background: #f8fafc;
+}
+
 @media (max-width: 1100px) {
+  .login-layout,
   .summary-grid,
   .form-grid,
-  .exit-grid {
+  .exit-grid,
+  .admin-grid,
+  .report-summary-grid,
+  .report-type-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .login-layout,
   .dashboard-grid,
   .hero {
     grid-template-columns: 1fr;
@@ -371,18 +673,24 @@ select {
 }
 
 @media (max-width: 720px) {
+  .login-shell,
   .app-shell {
     padding: 16px;
   }
 
+  .login-layout,
   .summary-grid,
   .form-grid,
   .exit-grid,
+  .admin-grid,
   .hero-grid,
-  .tabs-nav {
+  .tabs-nav,
+  .report-summary-grid,
+  .report-type-grid {
     grid-template-columns: 1fr;
   }
 
+  .session-panel,
   .split,
   .actions-row,
   .exit-header {

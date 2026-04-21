@@ -1,7 +1,9 @@
 import { LogIn } from "lucide-react";
 import { formatearDinero } from "../../utils/formato";
+import { formatearFechaHora } from "../../utils/parqueadero";
 
 export default function EntryForm({
+  fechaHoraSistema,
   formulario,
   onFormularioChange,
   onRegistrarEntrada,
@@ -14,7 +16,10 @@ export default function EntryForm({
   return (
     <section className="card">
       <div className="card-header">
-        <h2>Registrar ingreso de vehículo</h2>
+        <h2>Registrar ingreso de vehiculo</h2>
+        <p className="muted report-lead">
+          La fecha y hora de ingreso se registran automaticamente al guardar.
+        </p>
       </div>
 
       <div className="form-grid">
@@ -36,22 +41,19 @@ export default function EntryForm({
         <input
           placeholder="Nombre del conductor"
           value={formulario.conductor}
-          onChange={(event) =>
-            actualizarCampo("conductor", event.target.value)
-          }
+          onChange={(event) => actualizarCampo("conductor", event.target.value)}
         />
 
         <input
-          placeholder="Teléfono"
+          placeholder="Telefono"
           value={formulario.telefono}
           onChange={(event) => actualizarCampo("telefono", event.target.value)}
         />
 
-        <input
-          type="date"
-          value={formulario.entrada}
-          onChange={(event) => actualizarCampo("entrada", event.target.value)}
-        />
+        <div className="readonly-box">
+          <span>Ingreso automatico</span>
+          <strong>{formatearFechaHora(fechaHoraSistema)}</strong>
+        </div>
       </div>
 
       <div className="actions-row">

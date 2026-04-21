@@ -1,5 +1,5 @@
 import { Car, Truck } from "lucide-react";
-import { diasParqueado } from "../../utils/parqueadero";
+import { diasParqueado, formatearFechaHora } from "../../utils/parqueadero";
 import { formatearDinero } from "../../utils/formato";
 
 function IconoTipo({ tipo }) {
@@ -40,7 +40,7 @@ export default function VehicleTable({ vehiculos, tarifaPorTipo }) {
                   </span>
                 </td>
                 <td>{vehiculo.conductor}</td>
-                <td>{vehiculo.entrada}</td>
+                <td>{formatearFechaHora(vehiculo.entrada)}</td>
                 <td>{dias}</td>
                 <td>{formatearDinero(total)}</td>
                 <td>

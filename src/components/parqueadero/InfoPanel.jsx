@@ -3,21 +3,21 @@ import { AlertCircle, CheckCircle2, Clock3 } from "lucide-react";
 const items = [
   {
     icon: Clock3,
-    title: "Cobro diario automático",
+    title: "Cobro diario automatico",
     description:
       "El sistema calcula cuantos dias lleva cada vehiculo y multiplica por su tarifa diaria.",
   },
   {
     icon: CheckCircle2,
-    title: "Control por tipo de vehículo",
+    title: "Control por tipo de vehiculo",
     description:
       "Se separan automoviles, camiones y mulas para manejar tarifas y reportes.",
   },
   {
     icon: AlertCircle,
-    title: "Modulos sugeridos",
+    title: "Panel para administradores",
     description:
-      "Puedes agregar facturación, historial, usuarios, impresión de recibos y reportes mensuales.",
+      "El administrador puede gestionar usuarios, eliminar registros y actualizar tarifas por dia.",
   },
 ];
 

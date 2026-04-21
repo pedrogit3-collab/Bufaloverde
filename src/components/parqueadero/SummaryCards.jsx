@@ -44,7 +44,7 @@ export default function SummaryCards({ resumen }) {
           <Banknote size={24} />
         </div>
         <div>
-          <p className="muted">Cobro acumulado</p>
+          <p className="muted">Cobro proyectado activo</p>
           <strong className="money">
             {formatearDinero(resumen.ingresosEstimados)}
           </strong>
