@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { LockKeyhole, ShieldCheck } from "lucide-react";
+import { usuariosIniciales } from "../../data/usuariosAutorizados";
 
 const formularioInicial = {
   username: "",
@@ -9,6 +10,14 @@ const formularioInicial = {
 export default function LoginPage({ onLogin }) {
   const [formulario, setFormulario] = useState(formularioInicial);
   const [error, setError] = useState("");
+
+  function cargarAccesoDemo(usuario) {
+    setFormulario({
+      username: usuario.username,
+      password: usuario.password,
+    });
+    setError("");
+  }
 
   function actualizarCampo(event) {
     const { name, value } = event.target;
@@ -63,6 +72,24 @@ export default function LoginPage({ onLogin }) {
               Usa un usuario registrado para administrar entradas, salidas y
               reportes del parqueadero.
             </p>
+          </div>
+
+          <div className="demo-access">
+            <p className="demo-access-title">Accesos de demostracion</p>
+            <div className="demo-access-grid">
+              {usuariosIniciales.map((usuario) => (
+                <button
+                  className="demo-access-card"
+                  key={usuario.username}
+                  onClick={() => cargarAccesoDemo(usuario)}
+                  type="button"
+                >
+                  <strong>{usuario.nombre}</strong>
+                  <span>Usuario: {usuario.username}</span>
+                  <span>Clave: {usuario.password}</span>
+                </button>
+              ))}
+            </div>
           </div>
 
           <form className="login-form" onSubmit={enviarFormulario}>
